@@ -1,0 +1,65 @@
+@use 'functions' as f;
+
+// Breakpoints for min-width (up)
+$breakpoints-up: (
+    'small': f.em(480),
+    'medium': f.em(700),
+    'large': f.em(900),
+    'xlarge': f.em(1440),
+    'zzlarge': f.em(1764)
+);
+
+// Breakpoints for max-width (down)
+$breakpoints-down: (
+    'small': f.em(699.98),
+    'medium': f.em(899.98),
+    'large': f.em(1439.98),
+    'zlarge': f.em(1763.98)
+);
+
+// Breakpoints for container max-widths
+$container-max-widths: (
+    'small': 100%,       // Full width for small devices
+    'medium': f.em(700),     // Medium devices (700px)
+    'large': f.em(900),      // Large devices (900px)
+    'xlarge': f.em(1200)     // X-Large devices (customize as needed)
+);
+
+// Mixin for min-width breakpoints
+@mixin breakpoint-up($size) {
+    @media (min-width: map-get($breakpoints-up, $size)) {
+        @content;
+    }
+}
+
+// Mixin for max-width breakpoints
+@mixin breakpoint-down($size) {
+    @media (max-width: map-get($breakpoints-down, $size)) {
+        @content;
+    }
+}
+
+// Mixin to create a responsive container
+@mixin container-responsive() {
+    width: 100%;
+    padding-right: f.rem(16);
+    padding-left: f.rem(16);
+    margin-right: auto;
+    margin-left: auto;
+
+    @each $breakpoint, $max-width in $container-max-widths {
+        // Check if the breakpoint exists in $breakpoints-up
+        @if map-has-key($breakpoints-up, $breakpoint) {
+            @include breakpoint-up($breakpoint) {
+                max-width: $max-width;
+            }
+        } @else {
+            @warn "No matching breakpoint found for '#{$breakpoint}' in $breakpoints-up.";
+        }
+    }
+}
+
+// Applying the mixin to a container class
+.container {
+    @include container-responsive();
+}

@@ -1,0 +1,25 @@
+@use 'sass:math';
+
+// CONVERTING PIXELS TO REM:
+// font-size: rem(30)
+// Throw an error if parameter has a unit, like 16px - px -is unit in this case.
+@function rem($pixel) {
+    // if is-unitless $pixel divide $pixel by 16 to return rems:
+    @if math.is-unitless($pixel) {
+        @return math.div($pixel, 16) + rem;
+    }
+    // Otherwise (else) throw an error
+    @else {
+        @error 'Don\'t use units when using the rem() function, only numbers!!!'
+    }
+};
+
+// CONVERTING PIXELS TO EM:
+@function em($pixel) {
+
+    @if math.is-unitless($pixel) {
+        @return math.div($pixel, 16) + em;
+    }@else {
+        @error 'Don\'t use units when using the em() function, only numbers!!!'
+    }
+}

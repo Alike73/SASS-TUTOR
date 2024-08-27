@@ -1,0 +1,39 @@
+@use '../utils' as u;
+
+.square_1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: u.rem(40);
+}
+.square_2 {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: u.rem(40);
+}
+.square_3 {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: u.rem(40);
+}
+
+.square_4 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  font-size: u.rem(40);
+}
+.square_5 {
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  font-size: u.rem(40);
+}
+.square_6 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: u.rem(40);
+}

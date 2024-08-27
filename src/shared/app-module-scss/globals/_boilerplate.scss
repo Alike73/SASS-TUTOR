@@ -1,0 +1,41 @@
+@use '../utils' as u;
+/* font-family: "Poppins", sans-serif; */
+
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: u.$font-primary;
+  margin: 0;
+  padding: 0;
+}
+
+input,
+label,
+button { display: block; }
+
+input,
+button {
+  background: none;
+  border: none;
+  font: inherit;
+}
+
+button { cursor: pointer; }
+
+input { width: 100%; }
+
+.App {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+}

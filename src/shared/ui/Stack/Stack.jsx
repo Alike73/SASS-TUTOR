@@ -1,5 +1,5 @@
 import { getStyle } from "../../helper/getStyle";
-import styles from './Stack.module.scss';
+import styles from './_Stack.module.scss';
 
 
 export const Stack = ({children, direction='row', justify, align, wrap, max}) => {
